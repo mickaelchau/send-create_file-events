@@ -3,9 +3,9 @@ from google.api_core.exceptions import NotFound
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-PROJECT_ID = "micka-cloud-run-365208"
-TOPIC_NAME = "create-file"
-DIRECTORY = "/mnt/filestore_dir"
+PROJECT_ID = "<PROJECT_ID>"
+TOPIC_NAME = "<TOPIC_NAME>"
+DIRECTORY = "<PATH_TO_FILESTORE>"
 
 class MyHandler(FileSystemEventHandler):
     def on_created(self, event):
@@ -27,7 +27,7 @@ observer.schedule(MyHandler(), path=DIRECTORY)
 observer.start()
 
 try:
-    print("Lsitening for created files in the path: /mnt/filestore_dir")
+    print("Listening for created files in the path: {DIRECTORY}")
     while True:
         pass
 except KeyboardInterrupt:
